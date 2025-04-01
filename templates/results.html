@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Image - AI Image Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="app-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="{{ url_for('dashboard') }}" class="logo">AI Image Generator</a>
+                <nav>
+                    <ul>
+                        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                        <li><a href="{{ url_for('generate') }}">Generate Image</a></li>
+                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="result-page">
+        <div class="container">
+            <h1>Your Generated Image</h1>
+            
+            <div class="result-container">
+                <div class="result-image">
+                    <img src="{{ image.url }}" alt="{{ image.prompt }}">
+                </div>
+                
+                <div class="result-details">
+                    <div class="prompt-box">
+                        <h3>Your Prompt:</h3>
+                        <p>{{ image.prompt }}</p>
+                    </div>
+                    
+                    <div class="result-meta">
+                        <p><strong>Created:</strong> {{ image.created_at }}</p>
+                        <p><strong>Image ID:</strong> {{ image.id }}</p>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <a href="{{ image.url }}" class="btn btn-secondary" download target="_blank">Download Image</a>
+                        <a href="{{ url_for('generate') }}" class="btn btn-primary">Create Another</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="back-link">
+                <a href="{{ url_for('dashboard') }}">&larr; Back to Dashboard</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 AI Image Generator. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

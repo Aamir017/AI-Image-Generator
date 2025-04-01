@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AI Image Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="app-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="{{ url_for('dashboard') }}" class="logo">AI Image Generator</a>
+                <nav>
+                    <ul>
+                        <li><a href="{{ url_for('dashboard') }}" class="active">Dashboard</a></li>
+                        <li><a href="{{ url_for('generate') }}">Generate Image</a></li>
+                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Welcome, {{ user_id }}</h1>
+                <a href="{{ url_for('generate') }}" class="btn btn-primary">Create New Image</a>
+            </div>
+
+            <div class="user-stats">
+                <div class="stat-card">
+                    <h3>Account Created</h3>
+                    <p>{{ user_data.created_at }}</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Last Login</h3>
+                    <p>{{ user_data.last_login }}</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Images Created</h3>
+                    <p>{{ images|length }}</p>
+                </div>
+            </div>
+
+            <section class="image-gallery">
+                <h2>Your Generated Images</h2>
+                
+                {% if images %}
+                    <div class="gallery-grid">
+                        {% for image in images %}
+                            <div class="gallery-item">
+                                <div class="gallery-image">
+                                    <img src="{{ image.url }}" alt="{{ image.prompt }}">
+                                </div>
+                                <div class="gallery-info">
+                                    <p class="gallery-prompt">{{ image.prompt }}</p>
+                                    <p class="gallery-date">{{ image.created_at }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="empty-state">
+                        <p>You haven't generated any images yet.</p>
+                        <a href="{{ url_for('generate') }}" class="btn btn-secondary">Create Your First Image</a>
+                    </div>
+                {% endif %}
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 AI Image Generator. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

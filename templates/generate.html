@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Image - AI Image Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="app-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="{{ url_for('dashboard') }}" class="logo">AI Image Generator</a>
+                <nav>
+                    <ul>
+                        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                        <li><a href="{{ url_for('generate') }}" class="active">Generate Image</a></li>
+                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="generate-page">
+        <div class="container">
+            <h1>Create Your Image</h1>
+            <p class="subtitle">Describe what you want to see, and our AI will bring it to life</p>
+            
+            {% if error %}
+            <div class="error-message">
+                <p>Error: {{ error }}</p>
+            </div>
+            {% endif %}
+            
+            <div class="generate-form-container">
+                <form method="POST" class="generate-form">
+                    <div class="form-group">
+                        <label for="prompt">Image Description</label>
+                        <textarea 
+                            name="prompt" 
+                            id="prompt" 
+                            rows="5" 
+                            placeholder="Be detailed! For example: 'A serene mountain landscape at sunset with a lake reflecting the orange sky, pine trees in the foreground, and snow-capped peaks in the distance'"
+                            required
+                        ></textarea>
+                    </div>
+                    
+                    <div class="form-tips">
+                        <h3>Tips for Great Results:</h3>
+                        <ul>
+                            <li>Be specific about what you want to see</li>
+                            <li>Include details about style, colors, lighting, and mood</li>
+                            <li>Mention the perspective or angle you want</li>
+                        </ul>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-large">Generate Image</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 AI Image Generator. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

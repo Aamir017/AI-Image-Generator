@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Transform Your Words Into Art</h1>
+            <p>Generate stunning images from text descriptions using AI</p>
+            <div class="hero-buttons">
+                <a href="{{ url_for('login') }}" class="btn btn-primary">Get Started</a>
+                <a href="#features" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✍️</div>
+                    <h3>Describe</h3>
+                    <p>Enter a detailed description of the image you want to create</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Generate</h3>
+                    <p>Our AI transforms your description into a unique image</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3>Save</h3>
+                    <p>Download your creation or generate more variations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 AI Image Generator. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
